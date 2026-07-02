@@ -2,6 +2,9 @@ from models.account import Account
 
 
 class AccountService:
+    """
+    Handles account operations.
+    """
 
     def __init__(self):
         self._accounts: list[Account] = []
@@ -12,5 +15,5 @@ class AccountService:
     def all(self) -> list[Account]:
         return self._accounts
 
-    def active(self) -> list[Account]:
-        return [a for a in self._accounts if a.active]
+    def count(self) -> int:
+        return len(self._accounts)

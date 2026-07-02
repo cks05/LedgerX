@@ -1,11 +1,14 @@
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(slots=True)
 class Category:
-    category_id: int
+    """
+    Represents a LedgerX category.
+    """
+
     category_type: str
+    parent: str
     name: str
-    color: str
-    icon: str
-    active: bool = True
+    budgetable: bool = True
+    notes: str = ""
