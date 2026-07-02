@@ -2,22 +2,18 @@ from models.account import Account
 
 
 class AccountService:
-    """Handles account-related operations."""
+    """
+    Handles account operations.
+    """
 
     def __init__(self):
-        self.accounts = []
+        self._accounts: list[Account] = []
 
-    def add_account(self, account: Account):
-        self.accounts.append(account)
+    def add(self, account: Account) -> None:
+        self._accounts.append(account)
 
-    def get_accounts(self):
-        return self.accounts
+    def all(self) -> list[Account]:
+        return self._accounts
 
-    def get_active_accounts(self):
-        return [a for a in self.accounts if a.active]
-
-    def get_account_by_id(self, account_id: int):
-        for account in self.accounts:
-            if account.account_id == account_id:
-                return account
-        return None
+    def count(self) -> int:
+        return len(self._accounts)

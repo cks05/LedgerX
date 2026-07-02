@@ -1,13 +1,14 @@
 from dataclasses import dataclass
 
-@dataclass
-class Account:
-    account_id : int
-    name : str
-    account_type : str
-    bank : str
-    currency : str = "INR"
-    opening_balace = float = 0.0
-    current_balance = flaot = 0.0
-    active : bool = True
 
+@dataclass(slots=True)
+class Account:
+    """
+    Represents a financial account in LedgerX.
+    """
+
+    account_id: str
+    name: str
+    account_type: str
+    opening_balance: float = 0.0
+    notes: str = ""
