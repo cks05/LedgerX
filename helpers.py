@@ -69,3 +69,9 @@ def write_budget_section(
     )
 
     return row + 2
+
+def write_formula(ws, cell, formula, cell_format=None):
+    """
+    Writes an Excel formula.
+    """
+    ws.write_formula(cell, formula, cell_format)

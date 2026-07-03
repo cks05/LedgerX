@@ -1,23 +1,72 @@
-import xlsxwriter
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*$py.class
 
-from services.workbook_builder import WorkbookBuilder
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
 
+# ==========================
+# IDE
+# ==========================
+.vscode/
+.idea/
 
-OUTPUT_FILE = r"E:\LedgerX\output\LedgerX.xlsx"
+# ==========================
+# OS Files
+# ==========================
+.DS_Store
+Thumbs.db
 
+# ==========================
+# Build / Distribution
+# ==========================
+build/
+dist/
+*.egg-info/
 
-def main():
+# ==========================
+# Logs
+# ==========================
+*.log
 
-    workbook = xlsxwriter.Workbook(OUTPUT_FILE)
+# ==========================
+# Test / Coverage
+# ==========================
+.pytest_cache/
+.coverage
+htmlcov/
 
-    builder = WorkbookBuilder(workbook)
+# ==========================
+# Jupyter
+# ==========================
+.ipynb_checkpoints/
 
-    builder.build()
+# ==========================
+# Output Files
+# ==========================
+output/
+*.xlsx
 
-    workbook.close()
+# ==========================
+# SQLite (Future)
+# ==========================
+*.db
+*.sqlite3
 
-    print("LedgerX workbook created successfully.")
+# ==========================
+# Environment Variables
+# ==========================
+.env
 
-
-if __name__ == "__main__":
-    main()
+# ==========================
+# Temporary Files
+# ==========================
+*.tmp
+*.bak
+*.swp

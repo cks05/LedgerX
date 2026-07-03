@@ -1,4 +1,4 @@
-from helpers import set_default_layout
+from helpers import set_default_layout, write_formula
 
 
 def create_dashboard_sheet(workbook, styles):
@@ -27,10 +27,33 @@ def create_dashboard_sheet(workbook, styles):
     ws.write("A7", "Total Transactions", styles["table_header"])
 
     # KPI Values (placeholder for now)
-    ws.write_number("B4", 0, styles["money"])
-    ws.write_number("B5", 0, styles["money"])
-    ws.write_number("B6", 0, styles["money"])
-    ws.write_number("B7", 0)
+    write_formula(
+        ws,
+        "B4",
+        '=SUMIF(Transactions!B5:B5000,"Income",Transactions!F5:F5000)',
+        styles["money"],
+    )
+
+    write_formula(
+        ws,
+        "B5",
+        '=SUMIF(Transactions!B5:B5000,"Expense",Transactions!F5:F5000)',
+        styles["money"],
+    )
+
+    write_formula(
+        ws,
+        "B6",
+        '=SUMIF(Transactions!B5:B5000,"Savings",Transactions!F5:F5000)',
+        styles["money"],
+    )
+
+    write_formula(
+        ws,
+        "B7",
+        "=COUNTA(Transactions!A5:A5000)",
+    )
+
 
     # Monthly Summary
     ws.merge_range(
@@ -45,3 +68,4 @@ def create_dashboard_sheet(workbook, styles):
         "Recent Transactions",
         styles["table_header"],
     )
+
