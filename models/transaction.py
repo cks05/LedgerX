@@ -2,12 +2,20 @@ from dataclasses import dataclass
 from datetime import date
 
 
-@dataclass
+@dataclass(slots=True)
 class Transaction:
-    transaction_id: int
+    """
+    Represents a financial transaction in LedgerX.
+    """
+
     transaction_date: date
-    account_id: int
-    category_id: int
+    transaction_type: str
+
+    source: str
+    destination: str
+
+    category: str
+
     amount: float
-    description: str
-    payee: str
+
+    notes: str = ""

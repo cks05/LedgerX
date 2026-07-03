@@ -1,12 +1,11 @@
 from sheets.budget import create_budget_planning_sheet
 from styles import get_styles
 from sheets.settings import create_settings_sheet
-from sheets.accounts import create_accounts_sheet
-# from sheets.dropdown_data import create_dropdown_sheet
-# from sheets.budget_planning import create_budget_planning_sheet
+from sheets.transactions import create_transactions_sheet
 from sheets.categories import create_categories_sheet
 from sheets.accounts import create_accounts_sheet
-
+from services.lookup_service import LookupService
+from sheets.dashboard import create_dashboard_sheet
 
 class WorkbookBuilder:
     """
@@ -27,14 +26,25 @@ class WorkbookBuilder:
             self.styles,
         )
 
-
-
         create_accounts_sheet(
             self.workbook,
             self.styles,
         )
 
         create_categories_sheet(
+            self.workbook,
+            self.styles,
+        )
+
+        lookup = LookupService(self.workbook)
+        lookup.create()
+
+        create_transactions_sheet(
+            self.workbook,
+            self.styles,
+        )
+
+        create_dashboard_sheet(
             self.workbook,
             self.styles,
         )

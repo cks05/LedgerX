@@ -41,3 +41,25 @@ SAVINGS_CATEGORIES = [
     "Crypto",
     "Other Savings"
 ]
+
+TRANSACTION_TYPES = [
+    "Income",
+    "Expense",
+    "Transfer",
+    "Savings",
+]
+
+ACCOUNT_TYPES = [
+    "Bank",
+    "Cash",
+    "Wallet",
+    "Credit Card",
+]
+
+CATEGORY_TYPES = [
+    "Income",
+    "Expense",
+    "Savings",
+]
+
+
