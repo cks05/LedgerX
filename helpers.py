@@ -75,3 +75,49 @@ def write_formula(ws, cell, formula, cell_format=None):
     Writes an Excel formula.
     """
     ws.write_formula(cell, formula, cell_format)
+
+def create_kpi_card(
+    ws,
+    title,
+    value,
+    first_row,
+    first_col,
+    styles,
+):
+    """
+    Creates a KPI card.
+    """
+
+    ws.merge_range(
+        first_row,
+        first_col,
+        first_row,
+        first_col + 2,
+        title,
+        styles["table_header"],
+    )
+
+    ws.merge_range(
+        first_row + 1,
+        first_col,
+        first_row + 2,
+        first_col + 2,
+        value,
+        styles["title"],
+    )
+
+def create_section_title(
+    ws,
+    cell_range,
+    title,
+    styles,
+):
+    """
+    Creates a section title.
+    """
+
+    ws.merge_range(
+        cell_range,
+        title,
+        styles["table_header"],
+    )
